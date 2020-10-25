@@ -1,7 +1,7 @@
 <div class="container"> 
     <div class="row"> 
       <div class="col-lg-4">
-       <%= render 'users/info', user: @user %>
+       <%= render 'users/info', user: @user, book: @book %>
       </div>
       <div class="col-lg-8"> 
         <table class="table table-basic">
@@ -12,9 +12,9 @@
           </tr>
           <h3>Books</h3>
             <tr>
-              <td>*imageを挿入</td>
-              <td>タイトルを挿入</td>
-              <td>オピニオンを挿入</td>
+              <td><%= image_tag attachment_url(@user, :profile_image, :fill, 50, 50, format: "jpg") %></td>
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
             </tr>
           
         </table>

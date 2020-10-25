@@ -1,7 +1,7 @@
 <div class="container"> 
     <div class="row"> 
       <div class="col-lg-4">
-       <%= render 'users/info', user: @user %>
+       <%= render 'users/info', user: @user, book: @book %>
       </div>
       <div class="col-lg-8"> 
         <table class="table table-basic">
@@ -13,7 +13,7 @@
           <h3>Users</h3>
           <% @users.each do |user| %>
             <tr>
-              <td>*image後でつくる</td>
+              <td><%= image_tag attachment_url(@user, :profile_image, :fill, 50, 50, format: "jpg") %></td>
               <td><%= user.name %></td>
               <td><%= link_to 'show', user_path(user.id) %></td>
             </tr>
