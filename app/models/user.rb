@@ -3,8 +3,7 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2 }
   validates :introduction, length: { maximum: 50 }
   validates :name, presence: true
-  
-  
+
   attachment :profile_image
   
   # Include default devise modules. Others available are:
