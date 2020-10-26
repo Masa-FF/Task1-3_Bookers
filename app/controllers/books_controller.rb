@@ -20,13 +20,39 @@ class BooksController < ApplicationController
     @user = @book.user #部分テンプレートに渡す本の投稿者を定義する
   end
   
+  def edit
+    @book = Book.find(params[:id])
+  end
+  
+  def update
+    book = Book.find(params[:id])
+    if book.update(book_params)
+      flash[:success] = "Book was successfully updated."
+      redirect_to book_path
+    else
+      redirect_to book_path
+    end
+  end  
+  
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    if book.destroy
+      flash[:success] = "Book was successfully deleted."
+      redirect_to books_path
+    else
+      flash[:alert] = "Failed..."
+      redirect_to books_path    
+    end 
+  end  
+  
   private
   def book_params
     params.require(:book).permit(:title, :body, :image)
   end
+  
   def user_params
     params.require(:user).permit(:name, :introduction, :image)
   end  
-  
   
 end

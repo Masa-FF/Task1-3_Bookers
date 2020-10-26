@@ -8,12 +8,16 @@
           <tr>
           　<th>title</th>
             <th>Opinion</th>  
+            <th></th>
+            <th></th>
           </tr>
           <h3>Book detail</h3>
 
             <tr>
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
+              <td><button type="button" class="btn btn-info btn-xs"><%= link_to 'Edit', edit_book_path(params[:id]) %></button></td>
+              <td><button type="button" class="btn btn-danger btn-xs"><%= link_to 'Destroy', book_path(params[:id]), method: :delete, data: {confirm: "Are you sure?"} %></button></td>
             </tr>
         </table>
       </div>
