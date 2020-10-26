@@ -13,6 +13,12 @@
           </tr>
           <h3>Book detail</h3>
             <tr>
+              <td>
+                <%= link_to user_path do %>
+                <%= attachment_image_tag @user, :profile_image , :fill, 50, 50, format: "jpg" %>
+                <br><%= @user.name %>
+                <% end %>
+              </td>
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
               <% if @user.id == current_user.id %>

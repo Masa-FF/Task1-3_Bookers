@@ -1,3 +1,14 @@
+<% if book.errors.any? %> 
+    <div class = "alert alert-warning">
+        <h2>error</h2>
+        <ul>
+            <% book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
 <h1>User info</h1>  
 
 <%= attachment_image_tag user, :profile_image , :fill, 100, 100, format: "jpg" %>

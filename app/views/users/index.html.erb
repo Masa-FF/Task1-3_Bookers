@@ -13,7 +13,7 @@
           <h3>Users</h3>
           <% @users.each do |user| %>
             <tr>
-              <td><%= attachment_image_tag @user, :profile_image , :fill, 100, 100, format: "jpg" %></td>
+              <td><%= attachment_image_tag user, :profile_image , :fill, 50, 50, format: "jpg" %></td>
               <td><%= user.name %></td>
               <td><%= link_to 'show', user_path(user.id) %></td>
             </tr>
