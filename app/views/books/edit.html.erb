@@ -1,11 +1,10 @@
 <h1>Editing Book</h1>
 <%= form_with model:@book, local:true do |f| %>
-    <h2>New Book</h2>
     <p>Title</p>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control'%>
     <p>Opinion</p>
-    <%= f.text_area :body %>
-    <br> <%= f.submit 'Update Book' %>
+    <%= f.text_area :body, class: 'form-control' %>
+    <br> <%= f.submit 'Update Book', class: 'btn btn-primary btn-block'   %>
 <% end %>
 
 <%= link_to 'Show', book_path(@book.id) %>  |  <%= link_to :Back , books_path %>
