@@ -11,8 +11,10 @@ class BooksController < ApplicationController
   end
 
   def index
-    @book = Book.new
-  end
+    @newbook = Book.new
+    @user = current_user
+    @books = Book.all
+  end  
 
   def show
     @newbook = Book.new #@bookだと変数が被ってしまうので、変数名を変えた
