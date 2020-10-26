@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
   
+  before_action :authenticate_user!
+  
   def new
   end
 
@@ -7,6 +9,7 @@ class BooksController < ApplicationController
     @newbook = Book.new(book_params)
     @newbook.user_id = current_user.id
     if @newbook.save
+    flash[:su] = "successfully"  
     redirect_to book_path(@newbook)
     else
     @books = Book.all
