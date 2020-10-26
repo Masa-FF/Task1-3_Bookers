@@ -20,6 +20,7 @@ class BooksController < ApplicationController
     @newbook = Book.new #@bookだと変数が被ってしまうので、変数名を変えた
     @book = Book.find(params[:id])#一冊の本を特定している
     @user = @book.user #部分テンプレートに渡す本の投稿者を定義する
+    @post = User.all
   end
   
   def edit
