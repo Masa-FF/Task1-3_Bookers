@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   
   before_action :authenticate_user!
   
+  
   def new
     
   end
@@ -33,6 +34,9 @@ class BooksController < ApplicationController
   
   def edit
     @book = Book.find(params[:id])
+    if @book.user.id != current_user.id
+      redirect_to books_path
+    end
   end
   
   def update
@@ -48,14 +52,9 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    if book.destroy
-      flash[:success] = "Book was successfully deleted."
-      redirect_to books_path
-    else
-      flash[:alert] = "Failed..."
-      redirect_to books_path    
-    end 
-  end  
+    flash[:success] = "Book was successfully deleted."
+    redirect_to books_path
+  end
   
   private
   def book_params
@@ -64,6 +63,6 @@ class BooksController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name, :introduction, :image)
-  end  
+  end
   
 end

@@ -13,10 +13,8 @@
           <h3>Book detail</h3>
             <tr>
               <td>
-                <%= link_to user_path do %>
-                <%= attachment_image_tag @user, :profile_image , :fill, 50, 50, format: "jpg" %>
-                <br><%= @user.name %>
-                <% end %>
+                <%= attachment_image_tag @user, :profile_image , :fill, 50, 50, format: "jpg", fallback: "no_image.jpg", size:'50x50' %>
+                <br><%= link_to @user.name ,user_path(@user.id) %>
               </td>
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
